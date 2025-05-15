@@ -5,22 +5,27 @@ import 'react-native-reanimated'
 
 import '../global.css'
 
-export default function RootLayout () {
+const AppRoutes = () => {
+  return (
+    <>
+      <StatusBar style='auto' />
+      <Stack>
+      <Stack.Screen name='index' options={{ headerShown: false }} />
+
+        <Stack.Screen name='onboarding' options={{ headerShown: false }} />
+        <Stack.Screen name='+not-found' />
+      </Stack>
+    </>
+  )
+}
+export default function Layout () {
   const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/Poppins-Regular.ttf')
+    Poppins: require('../assets/fonts/Poppins-Regular.ttf')
   })
 
   if (!loaded) {
     return null
   }
-  return (
-    <>
-      <Stack>
-        <Stack.Screen name='onboarding' options={{ headerShown: false }} />
-        <Stack.Screen name='index' options={{ headerShown: false }} />
-        <Stack.Screen name='+not-found' />
-      </Stack>
-      <StatusBar style='auto' />
-    </>
-  )
+
+  return <AppRoutes />
 }
